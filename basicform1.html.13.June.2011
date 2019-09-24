@@ -1,0 +1,51 @@
+<html>
+<head>
+<script type="text/javascript">
+
+function formReset()
+ {
+ document.getElementById("form1").reset();
+ }
+
+function totalopiate()
+{
+// parseInt to convert a string to a number
+a = parseInt(document.form1.number1.value)
+b = parseInt(document.form1.number2.value)
+c = parseInt(document.form1.number3.value)
+d = parseInt(document.form1.number4.value)
+e = parseInt(document.form1.number5.value)
+f = parseInt(document.form1.number6.value)
+
+
+//E9 =  b3 + (b4 / 3)
+e9 = a + b + c + d + e + f
+teste9 = a + (b / 3)
+document.form1.total.value = e9.toFixed(1)
+document.form1.testname.value = teste9.toFixed(1)
+}
+
+</script>
+
+</head>
+<body>
+<style type="text/css">
+	<!-- -->
+</style>
+<div id="opiCalcForm">
+<form id="form1" action="basicform.html"  name="form1">
+Number1: <input id="op1" name="number1" size="5" value="0" onblur="totalopiate();">
+Number2: <input id="op2" name="number2" size="5" value="0" onblur="totalopiate();">
+Number3: <input id="op3" name="number3" size="5" value="0" onblur="totalopiate();">
+Number4: <input id="op4" name="number4" size="5" value="0" onblur="totalopiate();">
+Number5: <input id="op5" name="number5" size="5" value="0" onblur="totalopiate();">
+Number6: <input id="op6" name="number6" size="5"  value="0" onblur="totalopiate();">
+Total: <input name="total" size="5" readonly=true><br /><hr />
+Total: <input name="testname" size="5" readonly=true><br />
+<button type="button" onclick="totalopiate()">Display Total</button>
+<input type="button" onclick="formReset()" value="Reset form" />
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+table,td,th
+{
+border:1px solid black;
+}
+table
+{
+width:50%;
+border-collapse:collapse;
+background-color: #c0c0c0;
+}
+th
+{
+height:10px;
+}
+
+#opiCalcForm {
+	position:left;
+	left:194px;
+	top:102px;
+	width:502px;
+	height:429px;
+	z-index:1;
+}
+.tHeadW {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FF0000;
+	line-height: 30px;
+	text-indent: 10px;
+}
+.tHeadA {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #7030A0;
+	line-height: 30px;
+	text-indent: 10px;
+}
+.tBodyW {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color: #000000;
+	padding-left: 5px;
+	padding-right: 5px;
+	line-height: normal;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	background-color: #55B23C;
+}
+.tBodyA {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color: #ffffff;
+	padding-left: 5px;
+	line-height: normal;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	background-color: #7030A0;
+}
+.tBodyI {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color: #000000;
+	padding-left: 5px;
+	padding-right: 5px;
+	line-height: normal;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	background-color: #FABF8F;
+}
+
+body {
+	background-color: #ffffff;
+	background-repeat: repeat-x;
+}
+td {
+	style="white-space:nowrap"
+}
+

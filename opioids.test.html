@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+// ----------------------------------------------------------------------------
+// Script Name: opioids.test.html
+// Creation Date: Mon Jun 13 2011 15:45:24 GMT-0700 (US Mountain Standard Time)
+// Last Modified: 8/14/2011 10:51:08 AM
+// Copyright 2011
+// Purpose:  Approximate Opioid Conversion Calculator.
+// ----------------------------------------------------------------------------
+-->
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="../js/opioids.js"></script>
+<link rel="stylesheet" type="text/css" href="opioids.css" />
+</head>
+
+<body onload="MorphTab()">
+
+<br /><br /><br /><br />
+<center>
+<div id="opiCalcForm"><!-- Add usage directions to table -->
+<form id="form1" action="opioids.fresh.html" name="form1" onclick="setTabIndex()">
+  <table width="70%" border="1" cellpadding="1" cellspacing="1" id="OpiateTable">
+  	<!-- <caption>
+  		Approximate Opioid Conversion Calculator
+  	</caption>
+  	-->
+    <tr>
+      <th colspan="4" align="center"> Approximate Opioid Conversion Calculator </th>
+    </tr>
+    <tr>
+    	<th nowrap="nowrap" colspan="4" align="left">Opioids (mg or mcg/day)</th>
+    </tr>
+    <tr>
+      <th nowrap="nowrap" class="tHeadW">Morphine IV/IM (mg)</th>
+      <td class="tBodyW"><input id="1" type="text" name="morphivim" value="0" size="5" onblur="MorphEquiv();"/></td>
+      <th nowrap="nowrap" class="tBodyA" >MSContin Equiv.(mg) =</th>
+      <td class="tBodyI"><input type="text" name="mscequiv" value="0" size="5" readonly="true"/></td>
+    </tr>
+    <tr>
+      <th nowrap="nowrap" class="tHeadW">Morphine IR-PO (mg)</th>
+      <td class="tBodyW"><input id="2" type="text" name="morphirpo" value="0" size="5" onblur="MorphEquiv();"/></td>
+      <th nowrap="nowrap" class="tBodyA">Oxycontin Equiv.(mg) =</th>
+      <td class="tBodyI"><input type="text" name="oxyconequiv" value="0" size="5" readonly="true"/></td>
+    </tr>
+    <tr>
+      <th nowrap="nowrap" class="tHeadW">Morphine SR-PO (mg)</th>
+      <td class="tBodyW"><input id="3" type="text" name="morphsrpo" value="0" size="5" onblur="MorphEquiv();"/></td>
+      <th nowrap="nowrap" class="tBodyA">Oxycodone IR Equiv.(mg) =</th>
+      <td class="tBodyI"><input type="text" name="oxycodequiv" value="0" size="5" readonly="true" /></td>
+    </tr>
+    <tr>
+      <th nowrap="nowrap" class="tHeadW">Oxycodone PO (mg)</th>
+      <td class="tBodyW"><input id="4" type="text" name="oxycopo" value="0" size="5" onblur="MorphEquiv();"/></td>
+      <th nowrap="nowrap" class="tBodyA">IV Morphine Equiv.(mg) =</th>
+      <td class="tBodyI"><input type="text" name="ivmorpho" value="0" size="5" readonly="true"/></td>
+    </tr>
+    <tr>
+      <th nowrap="nowrap" class="tHeadW">Oxycodone SR-PO (mg)</th>
+      <td class="tBodyW"><input id="5" type="text" name="oxycosrpo" value="0" size="5" onblur="MorphEquiv();"/></td>
+      <th nowrap="nowrap" class="tBodyA">IV HYDROmorphone Equiv.(mg) =</th>
+      <td class="tBodyI"><input type="text" name="ivhydrmorpho" value="0" size="5" readonly="true"/></td>
+    </tr>
+    <tr>
+      <th nowrap="nowrap" class="tHeadW">Meperidine IV/IM (mg)</th>
+      <td class="tBodyW"><input id="6" type="text" name="meperivim" value="0" size="5" onblur="MorphEquiv();"/></td>
+      <td colspan="2" rowspan="4" align="left">Enter the appropriate amounts of opioid in the <font color="55B23C">
+  green</font> data cells.
+Percocet presumes the 5mg oxycodone component, so <u><font color="7030A0">just enter the number of tablets</font></u>.
+All other drugs enter mg or mcg amt.
+<font color="FF0000">Methadone conversions* can only be approximate.
+Current conversion 9:1. Other opioids are fairly standard conversions.
+Read out relative equivalents per day in the right cells</font>.
+      </td>
+    </tr>
+    <tr>
+      <th nowrap="nowrap" class="tHeadW">Hydrocodone PO (mg)</th>
+      <td class="tBodyW"><input id="7" type="text" name="hydrocopo" value="0" size="5" onblur="MorphEquiv();"/></td>
+    </tr>
+    <tr>
+      <th nowrap="nowrap" class="tHeadW">Fentanyl IV (mcg)</th>
+      <td class="tBodyW"><input id="8" type="text" name="fentaniv" value="0" size="5" onblur="MorphEquiv();"/></td>
+    </tr>
+    <tr>
+      <th nowrap="nowrap" class="tHeadW">Perco-cet/dan 5mg (#)</th>
+      <td class="tBodyW"><input id="9" type="text" name="percocet" value="0" size="5" onblur="MorphEquiv();"/></td>
+    </tr>
+    <tr>
+      <th nowrap="nowrap" class="tHeadW">Fentanyl TransD (mcg)</th>
+      <td class="tBodyW"><input id="10" type="text" name="fentantran" value="0" size="5" onblur="MorphEquiv();"/></td>
+      <td colspan="2" rowspan="4" align="left">If you are uncertain of how to use this tool,
+      	call 602-239-3648 for more information about equivalents.
+      </td>
+    </tr>
+    <tr>
+      <th nowrap="nowrap" class="tHeadW">Hytromorphone IV (mg)</th>
+      <td class="tBodyW"><input id="11" type="text" name="hytromorphiv" value="0" size="5" onblur="MorphEquiv();"/></td>
+    </tr>
+    <tr>
+      <th nowrap="nowrap" class="tHeadW">Hydromorphone PO (mg)</th>
+      <td class="tBodyW"><input id="12" type="text" name="hydromorphopo" value="0" size="5" onblur="MorphEquiv();"/></td>
+    </tr>
+    <tr>
+      <th nowrap="nowrap" class="tHeadA">Methadone IV (mg)*</th>
+      <td class="tBodyW"><input id="13" type="text" name="methadoniv" value="0" size="5" onblur="MorphEquiv();"/></td>
+    </tr>
+    <tr>
+      <th nowrap="nowrap" class="tHeadA">Methadone PO (mg)*</th>
+      <td class="tBodyW"><input id="14" type="text" name="methadonpo" value="0" size="5" onblur="MorphEquiv();"/></td>
+			<th align="right" colspan="2"><center><i id="15" type="reset"><h3><b>Reset  </b></h3></i></center><!-- <input id="15" type="reset"/> --></th>
+			<!-- <td align="right"><button id="15" type="button" onclick="MorphEquiv()">Display Total</button></td> -->
+    </tr>
+		<tr>
+			<td colspan="4">Click anywhere to update conversion.</td>
+			<!-- <td align="center"><input type="reset"/></td>
+			<td><button id="15" type="button" onclick="MorphEquiv()">Display Total</button></td> -->
+		</tr>
+  </table>
+  </form>
+</div>
+</center>
+</body>
+</html>

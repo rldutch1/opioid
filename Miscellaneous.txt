@@ -1,0 +1,227 @@
+basicform1.html
+opioiods_fresh.html
+opioids.html
+opioids1.html
+
+<!--
+Opioids (mg or mcg/day)
+Morphine IV/IM (mg)			morphivim			fname
+Morphine IR-PO (mg)			morphirpo			lname
+Morphine SR-PO (mg)			morphsrpo
+Oxycodone PO (mg)				oxycopo
+Oxycodone SR-PO (mg)		oxycosrpo
+Meperidine IV/IM (mg)		meperivim
+Hydrocodone PO (mg)			hydrocopo
+Fentanyl IV (mcg)				fentaniv
+Perco-cet/dan 5mg (#)		percocet
+Fentanyl TransD (mcg)		fentantran
+Hytromorphone IV (mg)		hytromorphiv
+Hydromorphone PO (mg)		hydromorphopo
+Methadone IV (mg)*			methadoniv
+Methadone PO (mg)*			methadonpo
+-->
+
+	var morphivim, morphirpo, morphsrpo, oxycopo, oxycosrpo, meperivim, hydrocopo;
+	var fentaniv, percocet, fentantran, hytromorphiv, hydromorphopo, methadoniv, methadonpo
+
+MSContin Equiv.(mg) = 					mscequiv
+
+Oxycontin Equiv.(mg) =					oxyconequiv
+
+Oxycodone IR Equiv.(mg) =				oxycodequiv
+
+IV Morphine Equiv.(mg) =				ivmorpho
+
+IV HYDROmorphone Equiv.(mg) =		ivhydrmorpho
+
+a = 0
+b = 0
+c = 0
+d = 0
+e = 0
+f = 0
+
+
+<style type="text/css">
+<!--
+#opiCalcForm {
+	position:left;
+	left:194px;
+	top:102px;
+	width:502px;
+	height:429px;
+	z-index:1;
+}
+.tHeadW {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #FFFFFF;
+	line-height: 30px;
+	text-indent: 10px;
+}
+.tBodyW {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color: #FFFFFF;
+	padding-left: 5px;
+	line-height: normal;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+.tBodyA {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color: #000000;
+	padding-left: 5px;
+	line-height: normal;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+body {
+	background-color: #265382;
+	background-repeat: repeat-x;
+}
+-->
+</style>
+
+
+ <script type="text/javascript">
+
+ document.write(isNaN(123)+ "<br />");
+ document.write(isNaN(-1.23)+ "<br />");
+ document.write(isNaN(5-2)+ "<br />");
+ document.write(isNaN(0)+ "<br />");
+ document.write(isNaN("Hello")+ "<br />");
+ document.write(isNaN("2005/12/12")+ "<br />");
+
+</script>
+
+		b3 = parseFloat(document.form1.morphivim.value);
+		b4 = parseFloat(document.form1.morphirpo.value);
+		b5 = parseFloat(document.form1.morphsrpo.value);
+		b6 = parseFloat(document.form1.oxycopo.value);
+		b7 = parseFloat(document.form1.oxycosrpo.value);
+		b8 = parseFloat(document.form1.meperivim.value);
+		b9 = parseFloat(document.form1.hydrocopo.value);
+		b10 = parseFloat(document.form1.fentaniv.value);
+		b11 = parseFloat(document.form1.percocet.value);
+		b12 = parseFloat(document.form1.fentantran.value);
+		b13 = parseFloat(document.form1.hytromorphiv.value);
+		b14 = parseFloat(document.form1.hydromorphopo.value);
+		b15 = parseFloat(document.form1.methadoniv.value);
+		b16 = parseFloat(document.form1.methadonpo.value);
+		b17 = parseFloat((0));
+		b18 = parseFloat((0));
+		b19 = parseFloat((0));
+
+var alertmsg = '';
+if isNan(b3)
+{
+	alertmsg = alertmsg + "Morphine IV/IVM (mg)" + "\n";
+}
+if isNan(b4)
+{
+	alertmsg = alertmsg + "Morphine IR-PO (mg)" + \n";
+}
+if isNan(b5)
+{
+	alertmsg = alertmsg + "Morphine SR-PO" + "\n";
+}
+if isNan(b6)
+{
+	alertmsg = alertmsg + "Oxycodone PO (mg)" + \n";
+}
+if isNan(b7)
+{
+	alertmsg = alertmsg + "Oxycodone SR-PO (mg)" + "\n";
+}
+if isNan(b8)
+{
+	alertmsg = alertmsg + "Meperidine IV/IM (mg)" + \n";
+}if isNan(b9)
+{
+	alertmsg = alertmsg + "Hydrocodone PO (mcg)" + "\n";
+}
+if isNan(b10)
+{
+	alertmsg = alertmsg + "Fentanyl IV (mcg)" + \n";
+}if isNan(b11)
+{
+	alertmsg = alertmsg + "Perco-cet/dan 5mg (#)" + "\n";
+}
+if isNan(b12)
+{
+	alertmsg = alertmsg + "Fentanyl TransD (mcg)" + \n";
+}if isNan(b13)
+{
+	alertmsg = alertmsg + "Hytromorphone IV (mg)" + "\n";
+}
+if isNan(b14)
+{
+	alertmsg = alertmsg + "Hydromorphone PO (mg)" + \n";
+}if isNan(b15)
+{
+	alertmsg = alertmsg + "Methadone IV (mg)*" + "\n";
+}
+if isNan(b16)
+{
+	alertmsg = alertmsg + "Methadone PO (mg)" + \n";
+}
+if alertmsg != "")
+{
+	alertmsg = "Please enter the following values \n" + alertmsg;
+	alert(alertmsg);
+}
+else
+// Check for Number begin
+var alertmsg ='';
+if (fname=="")
+{
+alertmsg = alertmsg + "Name" +"\n";
+}
+if (addr=="")
+{
+alertmsg = alertmsg + "Address" +"\n";
+}
+if (((form1.ch1.checked) && (qty1 <=0))
+|| ((form1.ch2.checked) && (qty2 <=0))
+|| ((form1.ch3.checked) && (qty3 <=0))
+|| ((form1.ch4.checked) && (qty4 <=0)))
+{
+alertmsg = alertmsg + "Quantity" +"\n";
+}
+else if (((!form1.ch1.checked) && (qty1 >0))
+|| ((!form1.ch2.checked) && (qty2 >0))
+|| ((!form1.ch3.checked) && (qty3 >0))
+|| ((!form1.ch4.checked) && (qty4 >0))) {
+alertmsg = alertmsg + "Product" +"\n";
+}
+
+if (alertmsg != "")
+{
+alertmsg = "Please enter the following values \n" + alertmsg;
+alert(alertmsg);
+} else {
+checkDiscount();
+fullname = formatName(fname,lname);
+document.write('<html><body><table align="top" cellpadding="4" cellspacing="7">');
+document.write('<tr><td><font color="#ffffff" size="+3" face="verdana">' + "Order Details" + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Name: " + fullname + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Address: " + addr + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Product Name: " + prditem1 + '</font></td>');
+document.write('<td><font color="#ffffff" size="4" face="verdana">' + "Quantity: " + qty1 + '</font></td></tr>'); document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Product Name: " + prditem2 + '</font></td>');
+document.write('<td><font color="#ffffff" size="4" face="verdana">' + "Quantity: " + qty2 + '</font></td></tr>'); document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Product Name: " + prditem3 + '</font></td>');
+document.write('<td><font color="#ffffff" size="4" face="verdana">' + "Quantity: " + qty3 + '</font></td></tr>'); document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Product Name: " + prditem4 + '</font></td>');
+document.write('<td><font color="#ffffff" size="4" face="verdana">' + "Quantity: " + qty4 + '</font></td></tr>'); document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Total Quantity: " + totqty + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">'+ "Total Discount: " + dispdiscnt + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Total Price: " + totprice.toFixed(2) + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Total Price after Discount: " + Math.round(disprice) + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "The Order Date is : " + dispdate + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "The Delivery Date is 3 days from the Order date" + '</font></td></tr>');
+document.write('</table></body></html>');
+document.bgColor= "#89775C";
+}
+// Check for Number end

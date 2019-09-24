@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- D:\Software\Robs_Stuff\Documents\HTML\JavaScript.Class\Data.Changed.In.Class\Calculating Numerals\Coffee\order_form_details.html -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+
+<script type="text/javascript">
+//<![CDATA[
+var memtype,discount,dispdiscnt,disprice,totprice,fullname;
+
+function display()
+{
+var fname,lname,addr,lstitem,quantity,fullname;
+var prditem1,prditem2,prditem3,prditem4,qty1,qty2,qty3,qty4,totqty;
+var orddate, dispdate;
+fname = form1.fname.value;
+lname = form1.lname.value;
+//fullname = fname + " " + lname;
+addr= form1.address.value;
+prditem1 = form1.ch1.value;
+prditem2 = form1.ch2.value;
+prditem3 = form1.ch3.value;
+prditem4 = form1.ch4.value;
+qty1 = parseInt(form1.qty1.value);
+qty2 = parseInt(form1.qty2.value);
+qty3 = parseInt(form1.qty3.value);
+qty4 = parseInt(form1.qty4.value);
+totqty = qty1 + qty2 + qty3 + qty4;
+orddate = new Date();
+dispdate = orddate.getMonth() + 1 + "-" + orddate.getDate() + "-" + orddate.getFullYear();
+var alertmsg ='';
+if (fname=="")
+{
+alertmsg = alertmsg + "Name" +"\n";
+}
+if (addr=="")
+{
+alertmsg = alertmsg + "Address" +"\n";
+}
+if (((form1.ch1.checked) && (qty1 <=0))
+|| ((form1.ch2.checked) && (qty2 <=0))
+|| ((form1.ch3.checked) && (qty3 <=0))
+|| ((form1.ch4.checked) && (qty4 <=0)))
+{
+alertmsg = alertmsg + "Quantity" +"\n";
+}
+else if (((!form1.ch1.checked) && (qty1 >0))
+|| ((!form1.ch2.checked) && (qty2 >0))
+|| ((!form1.ch3.checked) && (qty3 >0))
+|| ((!form1.ch4.checked) && (qty4 >0))) {
+alertmsg = alertmsg + "Product" +"\n";
+}
+
+if (alertmsg != "")
+{
+alertmsg = "Please enter the following values \n" + alertmsg;
+alert(alertmsg);
+} else {
+checkDiscount();
+fullname = formatName(fname,lname);
+document.write('<html><body><table align="top" cellpadding="4" cellspacing="7">');
+document.write('<tr><td><font color="#ffffff" size="+3" face="verdana">' + "Order Details" + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Name: " + fullname + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Address: " + addr + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Product Name: " + prditem1 + '</font></td>');
+document.write('<td><font color="#ffffff" size="4" face="verdana">' + "Quantity: " + qty1 + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Product Name: " + prditem2 + '</font></td>');
+document.write('<td><font color="#ffffff" size="4" face="verdana">' + "Quantity: " + qty2 + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Product Name: " + prditem3 + '</font></td>');
+document.write('<td><font color="#ffffff" size="4" face="verdana">' + "Quantity: " + qty3 + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Product Name: " + prditem4 + '</font></td>');
+document.write('<td><font color="#ffffff" size="4" face="verdana">' + "Quantity: " + qty4 + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Total Quantity: " + totqty + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">'+ "Total Discount: " + dispdiscnt + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Total Price: " + totprice.toFixed(2) + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Total Price after Discount: " + Math.round(disprice) + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "The Order Date Is: " + dispdate + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "The Delivery Date is 3 Days from the Order Date: " + '</font></td></tr>');
+document.write('</table></body></html>');
+document.bgColor= "#89775C";
+}
+//alert("Thanks for submitting the details");
+function checkDiscount()
+{
+totprice = 0;
+var price = new Array();
+price[0] = 300.25;
+price[1] = 100.15;
+price[2] = 125.85;
+price[3] = 50.90;
+var quantity = new Array();
+quantity[0] = parseInt(form1.qty1.value);
+quantity[1] = parseInt(form1.qty2.value);
+quantity[2] = parseInt(form1.qty3.value);
+quantity[3] = parseInt(form1.qty4.value);
+for(i=0;i<4;i++)
+{
+totprice = totprice + quantity[i] * price[i];
+}
+memtype = form1.membertype.value;
+dispdiscnt = '';
+switch(memtype)
+{
+case "gold":
+discount=15;
+dispdiscnt = discount + " % discount for Gold Card Members";
+break;
+case "silver":
+discount=10;
+dispdiscnt = discount + " % discount for Silver Card Members";
+break;
+case "privilege":
+discount=5; dispdiscnt = discount + " % discount for Privilege Card Members";
+break;
+default:
+discount=0;
+}
+disprice = totprice - totprice * discount/100;
+}
+}
+//]]>
+function formatName(f_name,l_name)
+{
+var tmpStr, strLen, tmpChar, fname, lname, firstname, lastname;
+fname = f_name.toLowerCase();
+strLen = fname.length;
+tmpChar = fname.substring(0,1).toUpperCase();
+tmpStr = fname.substring(1,strLen);
+firstname = tmpChar + tmpStr;
+lname = l_name.toLowerCase();
+strLen = lname.length;
+tmpChar = lname.substring(0,1).toUpperCase();
+tmpStr = lname.substring(1,strLen);
+lastname = tmpChar + tmpStr;
+fullname = firstname.concat(" " + lastname);
+return (fullname);
+}
+</script>
+<style type="text/css">
+<!--
+#apOrderForm {
+	position:absolute;
+	left:194px;
+	top:102px;
+	width:502px;
+	height:429px;
+	z-index:1;
+}
+.tHeadW {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 25px;
+	font-weight: bold;
+	color: #FFFFFF;
+	line-height: 30px;
+	text-indent: 10px;
+}
+.tBodyW {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color: #FFFFFF;
+	padding-left: 5px;
+	line-height: normal;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+body {
+	background-color: #88775B;
+	background-image: url(images/brown_patch.jpg);
+	background-repeat: repeat-x;
+}
+#apTop {
+	position:absolute;
+	left:0;
+	top:0;
+	width:540px;
+	height:96px;
+	z-index:2;
+}
+#apLinks {
+	position:absolute;
+	left:6px;
+	top:104px;
+	width:185px;
+	height:308px;
+	z-index:3;
+}
+-->
+</style>
+<script type="text/javascript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</head>
+
+<body onload="MM_preloadImages('images/coffee-maker-2.jpg','images/gormet-beans-2.jpg','images/coffee-filter-2.jpg','images/cups-&amp;-mugs-2.jpg')">
+<div id="apOrderForm">
+<form id="form1" method="post" action= " ">
+  <table width="500" border="0" cellpadding="4" cellspacing="4" id="OrderForm">
+    <tr>
+      <th colspan="2" align="center" class="tHeadW"> Order Form </th>
+    </tr>
+    <tr>
+      <td class="tBodyW">First Name </td>
+      <td><input type="text" name="fname"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Last Name</td>
+      <td><input type="text" name="lname" /></td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Gender </td>
+      <td class="tBodyW"><input type="radio" name="gender" value="M" />
+        Male
+        <input type="radio" name="gender" value="F" />
+      Female </td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Address </td>
+      <td class="tBodyW"><textarea cols="40" rows="10" name="address"></textarea>
+      </td>
+    </tr>
+	<tr>
+<td class="tBodyW">Membership Type</td>
+<td colspan="2"><select name="membertype">
+<option value="select">-Select Membership -</option>
+<option value="gold">Gold Card</option>
+<option value="silver">Silver Card</option>
+<option value="privilege">Privilege Card</option>
+</select>
+</td>
+</tr>
+    <tr>
+	<td class="tBodyW">Coffee Maker</td>
+	<td class="tBodyW"><input type="checkbox" name="ch1" value="Coffee Maker" /></td>
+      <td class="tBodyW">Quantity</td>
+      <td class="tBodyW"><input type="text" name="qty1" value="0" /></td>
+    </tr><tr>
+	<td class="tBodyW">Gourmet Beans</td>
+	<td class="tBodyW"><input type="checkbox" name="ch2" value="Gourmet Beans" /></td>
+      <td class="tBodyW">Quantity</td>
+      <td class="tBodyW"><input type="text" name="qty2" value="0" /></td>
+    </tr><tr>
+	<td class="tBodyW">Coffee Filter</td>
+	<td class="tBodyW"><input type="checkbox" name="ch3" value="Coffee Filter" /></td>
+      <td class="tBodyW">Quantity</td>
+      <td class="tBodyW"><input type="text" name="qty3" value="0" /></td>
+    </tr>
+	<tr>
+	<td class="tBodyW">Cups and Mugs</td>
+	<td class="tBodyW"><input type="checkbox" name="ch4" value="Cups and Mugs" /></td>
+      <td class="tBodyW">Quantity</td>
+      <td class="tBodyW"><input type="text" name="qty4" value="0" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center" class="tBodyW"><input type="button" value="Submit" onclick="JavaScript:display()" />
+      </td>
+    </tr>
+  </table>
+  </form>
+</div>
+<div id="apTop"><img src="images/everthing-for-coffee.jpg" alt="" width="538" height="94" /></div>
+<div id="apLinks">
+  <div><a href="coffee_makers.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('CoffeeMakers','','images/coffee-maker-2.jpg',1)"><img src="images/coffee-maker-1.jpg" alt="CoffeeMakers" width="173" height="44" style="border:0" id="CoffeeMakers" /></a></div>
+
+  <div><a href="gourmet_beans.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Gourmet Beans','','images/gormet-beans-2.jpg',1)"><img src="images/gormet-beans-1.jpg" alt="Gourmet Beans" width="173" height="44" style="border:0" id="GourmetBeans" /></a></div>
+
+  <div><a href="coffee_filters.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Coffee Filters','','images/coffee-filter-2.jpg',1)"><img src="images/coffee-filter-1.jpg" alt="Coffee Filters" width="173" height="44" style="border:0" id="CoffeeFilters" /></a></div>
+
+  <div><a href="cups_and_mugs.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Cups and Mugs','','images/cups-&amp;-mugs-2.jpg',1)"><img src="images/cups-&amp;-mugs-1.jpg" alt="Cups and Mugs" width="173" height="44" style="border:0" id="CupsandMugs" /></a></div>
+</div>
+</body>
+</html>

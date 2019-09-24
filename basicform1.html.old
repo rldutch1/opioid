@@ -1,0 +1,57 @@
+<html>
+<head>
+<script type="text/javascript">
+function totalprice()
+{
+a = parseInt(document.form1.number1.value)
+b = parseInt(document.form1.number2.value)
+//c = a + b;
+c = a + b
+
+//var quantity = new Array();
+//quantity[0] = parseInt(form1.qty1.value);
+//quantity[1] = parseInt(form1.qty2.value);
+//quantity[2] = parseInt(form1.qty3.value);
+//quantity[3] = parseInt(form1.qty4.value);
+//for(i=0;i<2;i++)
+
+document.form1.total.value = c
+
+}
+
+</script>
+<!--
+<script language="javascript">
+var x, y, z;
+x = 50;
+y = 10;
+document.write ("x = "); // prints a message
+document.write (x); // prints the value of x
+document.write (", y = "); // prints a message
+document.write (y); // prints value of y
+document.write ("<br>x + y is "); // prints a string message
+z = x + y; // adds 50 + 10 and assigns the result to the variable z
+document.write (z); // prints the value of z, which is 60
+document.write ("<br>x - y is "); // prints a string
+z = x - y; // substracts x from y and assigns the resulting value to z
+document.write (z); // prints the value of z, 40
+document.write ("<br>x * y is "); // prints a message
+z = x * y; // multiplies x * y and assigns result to z
+document.write (z); // prints z, 500
+document.write ("<br>x / y is "); // prints a message
+z = x / y; // dividies x by y assigns result to z
+document.write (z); // prints the value of z, 5
+</script>
+-->
+</head>
+<body>
+
+<form action="BasicForm.html"  name="form1">
+Number1: <input name="number1" size="5">
+Number2: <input name="number2" size="5" onblur="totalprice();">
+Total: <input name="total" size="5" readonly=true><br />
+
+</form>
+
+</body>
+</html>

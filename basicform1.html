@@ -1,0 +1,109 @@
+<html>
+<head>
+<script type="text/javascript">
+
+function formReset()
+ {
+ document.getElementById("form1").reset();
+ }
+
+function setTabIndex()
+{
+	document.getElementById('op1').tabIndex="1";
+	document.getElementById('op2').tabIndex="2";
+	document.getElementById('op3').tabIndex="3";
+	document.getElementById('op4').tabIndex="4";
+	document.getElementById('op5').tabIndex="5";
+	document.getElementById('op6').tabIndex="6";
+	document.getElementById('op7').tabIndex="7";
+	document.getElementById('op8').tabIndex="8";
+	document.getElementById('op9').tabIndex="9";
+	document.getElementById('op10').tabIndex="10";
+	document.getElementById('op11').tabIndex="11";
+	document.getElementById('op12').tabIndex="12";
+	document.getElementById('op13').tabIndex="13";
+	document.getElementById('op14').tabIndex="14";
+}
+
+var b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, e3, e5, e7, e9, e11;
+
+function totalopiate()
+{
+	// parseInt to convert a string to a number
+	b3 = parseInt(document.form1.morphivim.value);
+	b4 = parseInt(document.form1.morphirpo.value);
+	b5 = parseInt(document.form1.morphsrpo.value);
+	b6 = parseInt(document.form1.oxycopo.value);
+	b7 = parseInt(document.form1.oxycosrpo.value);
+	b8 = parseInt(document.form1.meperivim.value);
+	b9 = parseInt(document.form1.hydrocopo.value);
+	b10 = parseInt(document.form1.fentaniv.value);
+	b11 = parseInt(document.form1.percocet.value);
+	b12 = parseInt(document.form1.fentantran.value);
+	b13 = parseInt(document.form1.hytromorphiv.value);
+	b14 = parseInt(document.form1.hydromorphopo.value);
+	b15 = parseInt(document.form1.methadoniv.value);
+	b16 = parseInt(document.form1.methadonpo.value);
+	b17 = (0);
+	b18 = (0);
+	b19 = (0);
+
+	e9 = b3 +(b4/3)+(b5/3)+(b8/7.5)+(b9/30)+(b15*9)+(b16*9/2)+(b13/0.15)+(b14/0.45)+(b17/0.2)+(b6*2/3)+(b7*2/3)+(b10*0.1)+(b18/20)+(b12*0.48)+(b19/30)+(b11*0.66*5);
+	e3 = (e9 * 3);
+	e5 = Math.round(e9 * 3 * 0.5);
+	e7 = Math.round(e9 * 3 * 0.5);
+	e11 = (e9 / 8);
+
+document.form1.e3total.value = e3.toFixed(1)
+document.form1.e5total.value = e5.toFixed(1)
+document.form1.e7total.value = e7.toFixed(1)
+document.form1.e9total.value = e9.toFixed(1)
+document.form1.e11total.value = e11.toFixed(1)
+
+} //End TotalOpiate Function
+
+function show_alert()
+ {
+ alert(e9 * 3);
+ }
+
+</script>
+
+</head>
+<body onload="totalopiate()">
+
+
+<style type="text/css">
+	<!--Cool Styles -->
+</style>
+<!-- Note: How do I get it to run two functions with onblur? I need to run totalopiate() and totalwhatever(). -->
+<div id="opiCalcForm">
+<form id="form1" action="basicform.html"  name="form1">
+	Morphine IV/IM (mg): <input id="op1" name="morphivim" size="5" value="0" onblur="totalopiate();"><br />
+	Morphine IR-PO (mg): <input id="op2" name="morphirpo" size="5" value="0" onblur="totalopiate();"><br />
+	Morphine SR-PO (mg): <input id="op3" name="morphsrpo" size="5" value="0" onblur="totalopiate();"><br />
+	Oxycodone PO (mg): <input id="op4" name="oxycopo" size="5" value="0" onblur="totalopiate();"><br />
+	Oxycodone SR-PO (mg): <input id="op5" name="oxycosrpo" size="5" value="0" onblur="totalopiate();"><br />
+	Meperidine IV/IM (mg): <input id="op6" name="meperivim" size="5" value="0" onblur="totalopiate();"><br />
+	Hydrocodone PO (mg): <input id="op7" name="hydrocopo" size="5" value="0" onblur="totalopiate();"><br />
+	Fentanyl IV (mcg): <input id="op8" name="fentaniv" size="5" value="0" onblur="totalopiate();"><br />
+	Perco-cet/dan 5mg (#): <input id="op9" name="percocet" size="5" value="0" onblur="totalopiate();"><br />
+	Fentanyl TransD (mcg): <input id="op10" name="fentantran" size="5" value="0" onblur="totalopiate();"><br />
+	Hytromorphone IV (mg): <input id="op11" name="hytromorphiv" size="5" value="0" onblur="totalopiate();"><br />
+	Hydromorphone PO (mg): <input id="op12" name="hydromorphopo" size="5"  value="0" onblur="totalopiate();"><br />
+	Methadone IV (mg)*: <input id="op13" name="methadoniv" size="5"  value="0" onblur="totalopiate();"><br />
+	Methadone PO (mg)*: <input id="op14" name="methadonpo" size="5"  value="0" onblur="totalopiate();"><br />
+
+	MSContin Equiv.(mg)=: <input name="e3total" size="5" readonly="true"><br />
+	Oxycontin Equiv.(mg)=: <input name="e5total" size="5" readonly="true"><br />
+	Oxycodone IR Equiv.(mg)=: <input name="e7total" size="5" readonly="true"><br />
+	IV Morphine Equiv.(mg)=: <input name="e9total" size="5" readonly="true"><br />
+	IV HYDROmorphone Equiv.(mg)=: <input name="e11total" size="5" readonly="true"><br /><hr />
+<button type="button" onclick="totalopiate()">Display Total</button>
+<input type="button" onclick="formReset()" value="Reset form" />
+<input type="button" onclick="show_alert()" value="Show alert box" />
+</form>
+</div>
+
+</body>
+</html>

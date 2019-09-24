@@ -1,0 +1,422 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- Line 216 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style type="text/css">
+a.link {color:#FF0000;}    /* unvisited link */
+a.visited {color:#00FF00;} /* visited link */
+a.hover {cursor: help; color:#000000;}   /* mouse over link */
+a.active {color:#0000FF;}  /* selected link */
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Approximate Opioid Conversion Calculator</title>
+
+<script type="text/javascript">
+//<![CDATA[
+var memtype,discount,dispdiscnt,disprice,totprice,fullname;
+
+function display()
+{
+	var morphivim, morphirpo, morphsrpo, oxycopo, oxycosrpo, meperivim, hydrocopo;
+	var fentaniv, percocet, fentantran, hytromorphiv, hydromorphopo, methadoniv, methadonpo
+
+var fname,lname,addr,lstitem,quantity,fullname;
+var prditem1,prditem2,prditem3,prditem4,qty1,qty2,qty3,qty4,totqty;
+var orddate,dispdate;
+fname = form1.fname.value;
+lname = form1.lname.value;
+//fullname = fname + " " + lname;
+addr= form1.address.value;
+prditem1 = form1.ch1.value;
+prditem2 = form1.ch2.value;
+prditem3 = form1.ch3.value;
+prditem4 = form1.ch4.value;
+qty1 = parseInt(form1.qty1.value);
+qty2 = parseInt(form1.qty2.value);
+qty3 = parseInt(form1.qty3.value);
+qty4 = parseInt(form1.qty4.value);
+totqty = qty1 + qty2 + qty3 + qty4;
+orddate = new Date();
+dispdate = orddate.getMonth() + 1 + "-" + orddate.getDate() + "-" + orddate.getYear();
+var alertmsg ='';
+if (fname=="")
+{
+alertmsg = alertmsg + "Name" +"\n";
+}
+if (addr=="")
+{
+alertmsg = alertmsg + "Address" +"\n";
+}
+if (((form1.ch1.checked) && (qty1 <=0))
+|| ((form1.ch2.checked) && (qty2 <=0))
+|| ((form1.ch3.checked) && (qty3 <=0))
+|| ((form1.ch4.checked) && (qty4 <=0)))
+{
+alertmsg = alertmsg + "Quantity" +"\n";
+}
+else if (((!form1.ch1.checked) && (qty1 >0))
+|| ((!form1.ch2.checked) && (qty2 >0))
+|| ((!form1.ch3.checked) && (qty3 >0))
+|| ((!form1.ch4.checked) && (qty4 >0))) {
+alertmsg = alertmsg + "Product" +"\n";
+}
+
+if (alertmsg != "")
+{
+alertmsg = "Please enter the following values \n" + alertmsg;
+alert(alertmsg);
+} else {
+checkDiscount();
+fullname = formatName(fname,lname);
+document.write('<html><body>');
+document.write('<div>');
+document.write('<form action="mailto:rob@robholland.com" enctype="text/plain" method="post">');
+document.write('<table align="top" cellpadding="4" cellspacing="7">');
+document.write('<tr><td><font color="#ffffff" size="+3" face="verdana">' + "Taco Order Details" + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Name: " + fullname + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Suite / Office Number: " + addr + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Product Name: " + prditem1 + '</font></td>');
+document.write('<td><font color="#ffffff" size="4" face="verdana">' + "Quantity: " + qty1 + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Product Name: " + prditem2 + '</font></td>');
+document.write('<td><font color="#ffffff" size="4" face="verdana">' + "Quantity: " + qty2 + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Product Name: " + prditem3 + '</font></td>');
+document.write('<td><font color="#ffffff" size="4" face="verdana">' + "Quantity: " + qty3 + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Product Name: " + prditem4 + '</font></td>');
+document.write('<td><font color="#ffffff" size="4" face="verdana">' + "Amount: $" + qty4 + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Total Items: " + totqty + '</font></td></tr>');
+//document.write('<tr><td><font color="#ffffff" size="4" face="verdana">'+ "Total Discount: " + dispdiscnt + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Total Price: $" + totprice.toFixed(2) + '</font></td></tr>');
+//document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "Total Price after Discount: " + Math.round(disprice) + '</font></td></tr>');
+document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "The Order Date is : " + dispdate + '</font></td></tr>');
+//document.write('<tr><td><font color="#ffffff" size="4" face="verdana">' + "The delivery date is sometime this week." + '</font></td></tr>');
+//document.write('<tr><td><button type="submit" value="Submit Query"/>Submit Order</td></tr>');
+//document.write('<tr><td><input type="reset"/></tr>');
+document.write('</table>');
+document.write('</form>');
+document.write('</div>');
+
+document.write('<script type="text/javascript">');
+document.write('function emailForm(){');
+document.write('var daReferrer = document.referrer;');
+document.write('var email = "rob@robholland.com";');
+//document.write('var email = "beth.mcclureshimel@bannerhealth.com";');
+document.write('var errorMsg = "here here here is the error error error error";');
+document.write('var subject = "Taco Order";');
+
+document.write('var yourname = ": ' + fullname + '";');
+document.write('var addy = "Suite / Office Number:  ' +  addr + '";');
+document.write('var item1 = "Product Name: ' + prditem1 + ' - Quantity: ' + qty1 + '";');
+document.write('var item2 = "Product Name: ' + prditem2 + ' - Quantity: ' + qty2 + '";');
+document.write('var item3 = "Product Name: ' + prditem3 + ' - Quantity: ' + qty3 + '";');
+document.write('var item4 = "Product Name: ' + prditem4 + ' - Amount: ' + qty4 + '";');
+document.write('var totquantity = "Total Items: ' + totqty + '";');
+//document.write('var totdisc = "Total Discount: ' + dispdiscnt + '";');
+document.write('var toto = "Total Price: ' + totprice.toFixed(2) + '";');
+//document.write('var topricedisc = "Total price after discount: ' + Math.round(disprice) + '";');
+document.write('var disdate = "The Order Date is: ' + dispdate + '";');
+document.write('var body_message = "%0D%0DOrder for "+yourname+"%0D%0D"+addy+"%0D%0D"+item1+"%0D%0D"+item2+"%0D%0D"+item3+"%0D%0D"+item4+"%0D%0D"+totquantity+"%0D%0D"+toto+"%0D%0D"+disdate;');
+
+document.write('var mailto_link = \'mailto:\'+email+\'?subject=\'+subject+\'&body=\'+body_message;');
+document.write('win = window.open(mailto_link,\'emailWindow\');');
+document.write('if (win && win.open &&!win.closed) win.close();');
+document.write('}');
+document.write('<\/script>');
+document.write('<div>');
+document.write('<input type="button" value="Submit Order" onclick="emailForm()" />');
+document.write('</div>');
+document.write('</body></html>');
+//document.bgColor= "#89775C";
+document.bgColor= "#000000";
+}
+//alert("Thanks for submitting the details");
+function checkDiscount()
+{
+totprice = 0;
+var price = new Array();
+price[0] = 1.00;
+price[1] = 5.00;
+price[2] = 1.00;
+price[3] = 1.00;
+var quantity = new Array();
+quantity[0] = parseInt(form1.qty1.value);
+quantity[1] = parseInt(form1.qty2.value);
+quantity[2] = parseInt(form1.qty3.value);
+quantity[3] = parseInt(form1.qty4.value);
+for(i=0;i<4;i++)
+{
+totprice = totprice + quantity[i] * price[i];
+}
+//memtype = form1.membertype.value;
+dispdiscnt = '';
+switch(memtype)
+{
+case "gold":
+discount=15;
+dispdiscnt = discount + " percent discount for Gold Card Members";
+break;
+case "silver":
+discount=10;
+dispdiscnt = discount + " percent discount for Silver Card Members";
+break;
+case "privilege":
+discount=5; dispdiscnt = discount + " percent discount for Privilege Card Members";
+break;
+default:
+discount=0;
+}
+disprice = totprice - totprice * discount/100;
+}
+}
+//]]>
+function formatName(f_name,l_name)
+{
+var tmpStr,strLen,tmpChar,fname,lname,firstname,lastname;
+fname = f_name.toLowerCase();
+strLen = fname.length;
+tmpChar = fname.substring(0,1).toUpperCase();
+tmpStr = fname.substring(1,strLen);
+firstname = tmpChar + tmpStr;
+lname = l_name.toLowerCase();
+strLen = lname.length;
+tmpChar = lname.substring(0,1).toUpperCase();
+tmpStr = lname.substring(1,strLen);
+lastname = tmpChar + tmpStr;
+fullname = firstname.concat(" " + lastname);
+return (fullname);
+}
+</script>
+<style type="text/css">
+<!--
+#apOrderForm {
+	position:absolute;
+	left:194px;
+	top:102px;
+	width:502px;
+	height:429px;
+	z-index:1;
+}
+.tHeadW {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #FFFFFF;
+	line-height: 30px;
+	text-indent: 10px;
+}
+.tBodyW {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color: #FFFFFF;
+	padding-left: 5px;
+	line-height: normal;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.tBodyWW {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	cursor: help;
+	color: #FFFFFF;
+	padding-left: 5px;
+	line-height: normal;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+body {
+	background-color: #000000;
+	background-image: url(images/brown_patch.jpg);
+	background-repeat: repeat-x;
+}
+#apTop {
+	position:absolute;
+	left:0;
+	top:0;
+	width:540px;
+	height:96px;
+	z-index:2;
+}
+#apLinks {
+	position:absolute;
+	left:6px;
+	top:104px;
+	width:185px;
+	height:308px;
+	z-index:3;
+}
+-->
+</style>
+<script type="text/javascript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+
+
+
+</head>
+
+<body onload="MM_preloadImages('images/coffee-maker-2.jpg','images/gormet-beans-2.jpg','images/coffee-filter-2.jpg','images/cups-and-mugs-2.jpg')">
+<div id="apOrderForm">
+<form id="form1" method="post" action= " ">
+  <table width="500" border="0" cellpadding="4" cellspacing="4" id="OrderForm">
+    <tr>
+      <th colspan="3" align="center" class="tHeadW"> Approximate Opioid Conversion Calculator </th>
+    </tr>
+    <tr>
+      <td class="tBodyW">Morphine IV/IM (mg)</td>
+      <td><input type="text" name="morphivim"/></td>
+      <td class="tBodyW">MSContin Equiv.(mg) =</td>
+      <td><input type="text" name="MSCEquiv"/></td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Morphine IR-PO (mg)</td>
+      <td><input type="text" name="morphirpo" /></td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Morphine SR-PO (mg)</td>
+      <td><input type="text" name="morphsrpo" /></td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Oxycodone PO (mg)</td>
+      <td><input type="text" name="oxycopo" /></td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Oxycodone SR-PO (mg)</td>
+      <td><input type="text" name="oxycosrpo" /></td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Meperidine IV/IM (mg</td>
+      <td><input type="text" name="meperivim" /></td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Hydrocodone PO (mg)</td>
+      <td><input type="text" name="hydrocopo" /></td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Fentanyl IV (mcg)</td>
+      <td><input type="text" name="fentaniv" /></td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Perco-cet/dan 5mg (#)</td>
+      <td><input type="text" name="percocet" /></td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Fentanyl TransD (mcg)</td>
+      <td><input type="text" name="fentantran" /></td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Hytromorphone IV (mg)</td>
+      <td><input type="text" name="hytromorphiv" /></td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Hydromorphone PO (mg)</td>
+      <td><input type="text" name="hydromorphopo" /></td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Methadone IV (mg)*</td>
+      <td><input type="text" name="methadoniv" /></td>
+    </tr>
+    <tr>
+      <td class="tBodyW">Methadone PO (mg)*</td>
+      <td><input type="text" name="methadonpo" /></td>
+    </tr>
+
+
+    <tr>
+<!--
+      <td class="tBodyW">Gender</td>
+      <td class="tBodyW"><input type="radio" name="gender" value="M" />
+        Male
+        <input type="radio" name="gender" value="F" />
+      Female </td>
+
+    </tr>
+    <tr>
+      <td class="tBodyW">Suite / Office Number </td>
+      <td class="tBodyW"><input type="text" name="address"></textarea>
+      </td>
+    </tr>
+	<tr>
+
+<td class="tBodyW">Membership Type</td>
+<td colspan="2"><select name="membertype">
+<option value="select">-Select Membership -</option>
+<option value="gold">Gold Card</option>
+<option value="silver">Silver Card</option>
+<option value="privilege">Privilege Card</option>
+</select>
+</td>
+</tr>
+
+    <tr>
+	<td class="tBodyW">Taco </td>
+	<td class="tBodyW"><input type="checkbox" name="ch1" value="Taco "> $1.00</input></td>
+      <td class="tBodyW">Quantity</td>
+      <td class="tBodyW"><input type="text" name="qty1" value="0" /></td>
+    </tr><tr>
+	<td class="tBodyWW">2 Taco Plate <img border="0" alt="2 Tacos with beans, rice, and soda" src="images/Tiny_Question_Mark2.png" onclick="alert('2 Tacos with beans, rice, and soda')";  /></td>
+	<td class="tBodyW"><input type="checkbox" name="ch2" value="2 Taco Plate"> $5.00</input></td>
+      <td class="tBodyW">Quantity</td>
+      <td class="tBodyW"><input type="text" name="qty2" value="0" /></td>
+    </tr><tr>
+	<td class="tBodyW">Soda Can</td>
+	<td class="tBodyW"><input type="checkbox" name="ch3" value="Soda Can"> $1.00</input></td>
+      <td class="tBodyW">Quantity</td>
+      <td class="tBodyW"><input type="text" name="qty3" value="0" /></td>
+    </tr>
+	<tr>
+	<td class="tBodyW">Donation</td>
+	<td class="tBodyW"><input type="checkbox" name="ch4" value="Donation"> $1.00</input></td>
+      <td class="tBodyW">Amount</td>
+      <td class="tBodyW"><input type="text" name="qty4" value="0" /></td>
+    </tr>
+    <tr>
+     <td align="center" class="tBodyW"><input type="button" value="Review Order" onclick="JavaScript:display()" />
+     <td></td>
+     <td></td>
+     <td align="center" class="tBodyW"><input type="reset"/></td>
+      </td>
+    </tr>
+-->
+  </table>
+  </form>
+</div>
+<!-- <div id="apTop"><img src="images/everthing-for-coffee.jpg" alt="" width="538" height="94" /></div> -->
+<!--
+<div id="apLinks">
+
+  <div><a href="coffee_makers.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('CoffeeMakers','','images/coffee-maker-2.jpg',1)"><img src="images/coffee-maker-1.jpg" alt="CoffeeMakers" width="173" height="44" style="border:0" id="CoffeeMakers" /></a></div>
+
+  <div><a href="gourmet_beans.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Gourmet Beans','','images/gormet-beans-2.jpg',1)"><img src="images/gormet-beans-1.jpg" alt="Gourmet Beans" width="173" height="44" style="border:0" id="GourmetBeans" /></a></div>
+
+  <div><a href="coffee_filters.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Coffee Filters','','images/coffee-filter-2.jpg',1)"><img src="images/coffee-filter-1.jpg" alt="Coffee Filters" width="173" height="44" style="border:0" id="CoffeeFilters" /></a></div>
+
+  <div><a href="cups_and_mugs.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Cups and Mugs','','images/cups-&amp;-mugs-2.jpg',1)"><img src="images/cups-&amp;-mugs-1.jpg" alt="Cups and Mugs" width="173" height="44" style="border:0" id="CupsandMugs" /></a></div>
+ -->
+</div>
+</body>
+</html>

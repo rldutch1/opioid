@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<script type="text/javascript">
+
+function formReset()
+ {
+ document.getElementById("form1").reset(MorphEquiv());
+
+ }
+
+function setTabIndex()
+{
+		document.getElementById('1').tabIndex="1";
+		document.getElementById('2').tabIndex="2";
+		document.getElementById('3').tabIndex="3";
+		document.getElementById('4').tabIndex="4";
+		document.getElementById('5').tabIndex="5";
+		document.getElementById('6').tabIndex="6";
+		document.getElementById('7').tabIndex="7";
+		document.getElementById('8').tabIndex="8";
+		document.getElementById('9').tabIndex="9";
+		document.getElementById('10').tabIndex="10";
+		document.getElementById('11').tabIndex="11";
+		document.getElementById('12').tabIndex="12";
+		document.getElementById('13').tabIndex="13";
+		document.getElementById('14').tabIndex="14";
+		document.getElementById('15').tabIndex="15";
+}
+
+var b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, e3, e5, e7, e9, e11;
+
+function MorphEquiv()
+{
+		b3 = parseFloat(document.form1.morphivim.value);
+		b4 = parseFloat(document.form1.morphirpo.value);
+		b5 = parseFloat(document.form1.morphsrpo.value);
+		b6 = parseFloat(document.form1.oxycopo.value);
+		b7 = parseFloat(document.form1.oxycosrpo.value);
+		b8 = parseFloat(document.form1.meperivim.value);
+		b9 = parseFloat(document.form1.hydrocopo.value);
+		b10 = parseFloat(document.form1.fentaniv.value);
+		b11 = parseFloat(document.form1.percocet.value);
+		b12 = parseFloat(document.form1.fentantran.value);
+		b13 = parseFloat(document.form1.hytromorphiv.value);
+		b14 = parseFloat(document.form1.hydromorphopo.value);
+		b15 = parseFloat(document.form1.methadoniv.value);
+		b16 = parseFloat(document.form1.methadonpo.value);
+		b17 = parseFloat((0));
+		b18 = parseFloat((0));
+		b19 = parseFloat((0));
+
+		e9 = b3 +(b4/3)+(b5/3)+(b8/7.5)+(b9/30)+(b15*9)+(b16*9/2)+(b13/0.15)+(b14/0.45)+(b17/0.2)+(b6*2/3)+(b7*2/3)+(b10*0.1)+(b18/20)+(b12*0.48)+(b19/30)+(b11*0.66*5);
+		e3 = (e9 * 3);
+		e5 = Math.round(e9 * 3 * 0.5);
+		e7 = Math.round(e9 * 3 * 0.5);
+		e11 = (e9 / 8);
+
+		document.form1.mscequiv.value = e3.toFixed(1)
+		document.form1.oxyconequiv.value = e5.toFixed(1)
+		document.form1.oxycodequiv.value = e7.toFixed(1)
+		document.form1.ivmorpho.value = e9.toFixed(1)
+		document.form1.ivhydrmorpho.value = e11.toFixed(1)
+
+}
+
+function MorphTab()
+{
+	MorphEquiv();
+	setTabIndex();
+}
+//window.onload = setTabIndex();
+//window.onload = MorphEquiv();
+
+
+</script>
+
+</head>
+<body onload="MorphTab()">
+<style type="text/css">
+<!--
+#opiCalcForm {
+	position:left;
+	left:194px;
+	top:102px;
+	width:502px;
+	height:429px;
+	z-index:1;
+}
+.tHeadW {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	line-height: 30px;
+	text-indent: 10px;
+}
+.tBodyW {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color: #000000;
+	padding-left: 5px;
+	line-height: normal;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	background-color: #55B23C
+}
+.tBodyA {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color: #ffffff;
+	padding-left: 5px;
+	line-height: normal;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	background-color: #7030A0;
+}
+.tBodyI {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color: #000000;
+	padding-left: 5px;
+	line-height: normal;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	background-color: #FABF8F;
+}
+body {
+	background-color: #ffffff;
+	background-repeat: repeat-x;
+}
+td {
+	style="white-space:nowrap"
+}
+-->
+<!-- Green:55B23C, Purple:7030A0, Peach:FABF8F -->
+
+</style>
+<div id="opiCalcForm"><!-- Add usage directions to table -->
+<form id="form1" action="opioids.fresh.html" name="form1" onclick="setTabIndex()">
+  <table width="70%" border="1" cellpadding="1" cellspacing="1" id="OpiateTable">
+    <tr>
+      <th colspan="4" align="center"> Approximate Opioid Conversion Calculator </th>
+    </tr>
+    <tr>
+    	<td nowrap="nowrap" colspan="4" align="left">Opioids (mg or mcg/day)</td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">Morphine IV/IM (mg)</td>
+      <td class="tBodyW"><input id="1" type="text" name="morphivim" value="0" onblur="MorphEquiv();"/></td>
+      <td nowrap="nowrap" class="tBodyA" >MSContin Equiv.(mg) =</td>
+      <td class="tBodyI"><input type="text" name="mscequiv" value="0" readonly="true"/></td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">Morphine IR-PO (mg)</td>
+      <td class="tBodyW"><input id="2" type="text" name="morphirpo" value="0" onblur="MorphEquiv();"/></td>
+      <td nowrap="nowrap" class="tBodyA">Oxycontin Equiv.(mg) =</td>
+      <td class="tBodyI"><input type="text" name="oxyconequiv" value="0" readonly="true"/></td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">Morphine SR-PO (mg)</td>
+      <td class="tBodyW"><input id="3" type="text" name="morphsrpo" value="0" onblur="MorphEquiv();"/></td>
+      <td nowrap="nowrap" class="tBodyA">Oxycodone IR Equiv.(mg) =</td>
+      <td class="tBodyI"><input type="text" name="oxycodequiv" value="0" readonly="true" /></td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">Oxycodone PO (mg)</td>
+      <td class="tBodyW"><input id="4" type="text" name="oxycopo" value="0" onblur="MorphEquiv();"/></td>
+      <td nowrap="nowrap" class="tBodyA">IV Morphine Equiv.(mg) =</td>
+      <td class="tBodyI"><input type="text" name="ivmorpho" value="0" readonly="true"/></td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">Oxycodone SR-PO (mg)</td>
+      <td class="tBodyW"><input id="5" type="text" name="oxycosrpo" value="0" onblur="MorphEquiv();"/></td>
+      <td nowrap="nowrap" class="tBodyA">IV HYDROmorphone Equiv.(mg) =</td>
+      <td class="tBodyI"><input type="text" name="ivhydrmorpho" value="0" readonly="true"/></td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">Meperidine IV/IM (mg</td>
+      <td class="tBodyW"><input id="6" type="text" name="meperivim" value="0" onblur="MorphEquiv();"/></td>
+      <td colspan="2" rowspan="4">Enter the appropriate amounts of opioid in the green data cells.
+Percocet presumes the 5mg oxycodone component, so just enter the number of tablets.
+All other drugs enter mg or mcg amt.
+Methadone conversions* can only be approximate.
+Current conversion 9:1. Other opioids are fairly standard conversions.
+Read out relative equivalents per day in the right cells.
+      </td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">Hydrocodone PO (mg)</td>
+      <td class="tBodyW"><input id="7" type="text" name="hydrocopo" value="0" onblur="MorphEquiv();"/></td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">Fentanyl IV (mcg)</td>
+      <td class="tBodyW"><input id="8" type="text" name="fentaniv" value="0" onblur="MorphEquiv();"/></td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">Perco-cet/dan 5mg (#)</td>
+      <td class="tBodyW"><input id="9" type="text" name="percocet" value="0" onblur="MorphEquiv();"/></td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">Fentanyl TransD (mcg)</td>
+      <td class="tBodyW"><input id="10" type="text" name="fentantran" value="0" onblur="MorphEquiv();"/></td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">Hytromorphone IV (mg)</td>
+      <td class="tBodyW"><input id="11" type="text" name="hytromorphiv" value="0" onblur="MorphEquiv();"/></td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">Hydromorphone PO (mg)</td>
+      <td class="tBodyW"><input id="12" type="text" name="hydromorphopo" value="0" onblur="MorphEquiv();"/></td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">Methadone IV (mg)*</td>
+      <td class="tBodyW"><input id="13" type="text" name="methadoniv" value="0" onblur="MorphEquiv();"/></td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">Methadone PO (mg)*</td>
+      <td class="tBodyW"><input id="14" type="text" name="methadonpo" value="0" onblur="MorphEquiv();"/></td>
+			<td align="right" colspan="2"><input id="15" type="reset"/></td>
+			<!-- <td align="right"><button id="15" type="button" onclick="MorphEquiv()">Display Total</button></td> -->
+    </tr>
+		<!-- <tr>
+			<td align="center"><input type="reset"/></td>
+			<td><button id="15" type="button" onclick="MorphEquiv()">Display Total</button></td>
+			</tr> -->
+  </table>
+  </form>
+</div>
+</body>
+</html>
