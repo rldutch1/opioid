@@ -2,7 +2,7 @@
 <!--
 // ----------------------------------------------------------------------------
 // Author: Robert Holland
-// Script Name: index.html 
+// Script Name: index.html
 // Creation Date: Mon Jun 13 2011 15:45:24 GMT-0700 (US Mountain Standard Time)
 // Last Modified: 9/3/2019 16:55:08
 // Copyright 2011
@@ -178,6 +178,17 @@ $(document).ready(function(){
 </head>
 <body onload="MorphTab()">
 <style type="text/css">
+body {
+	background-color: #000000;
+	background-repeat: repeat-x;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #000000;
+  padding: 2px;
+}
+
 table,td,th
 {
 border:1px solid black;
@@ -191,14 +202,8 @@ th
 {
 height:10px;
 }
-<!--
-#opiCalcForm {
-	position:left;
-	left:194px;
-	top:102px;
-	width:502px;
-	height:429px;
-	z-index:1;
+td {
+	style="white-space:nowrap"
 }
 .tHeadW {
 	font-family: Arial, Helvetica, sans-serif;
@@ -249,19 +254,11 @@ height:10px;
 	line-height: normal;
 	padding-bottom: 5px;
 	padding-top: 5px;
-	background-color: #FABF8F;
+	background-color: #7030A0;
 }
-<!-- 55B23C -->
-body {
-	background-color: #ffffff;
-	background-repeat: repeat-x;
+.tmessage {
+	color="FF0000";
 }
-td {
-	style="white-space:nowrap"
-}
--->
-<!-- Green:55B23C, Purple:7030A0, Peach:FABF8F -->
-
 </style>
 <br /><br />
 <center>
@@ -273,7 +270,7 @@ td {
   	</caption>
   	-->
     <tr>
-      <th colspan="4" align="center"> Approximate Opioid Conversion Calculator </th>
+      <th class="tHeadW" colspan="4" align="center"> Approximate Opioid Conversion Calculator </th>
     </tr>
     <tr>
     	<th nowrap="nowrap" colspan="4" align="left">Opioids (mg or mcg/day)</th>
@@ -311,11 +308,11 @@ td {
     <tr>
       <th nowrap="nowrap" class="tHeadW">Meperidine IV/IM (mg)</th>
       <td class="tBodyW"><input id="6" type="text" name="meperivim" value="0" size="5" onblur="MorphEquiv();"/></td>
-      <td colspan="2" rowspan="4">Enter the appropriate amounts of opioid in the <font color="55B23C">
+      <td class="tBodyX" colspan="2" rowspan="4"><font color="FF0000">Enter the appropriate amounts of opioid in the <font color="55B23C">
   green</font> data cells.
 Percocet presumes the 5mg oxycodone component, so <u><font color="7030A0">just enter the number of tablets</font></u>.
 All other drugs enter mg or mcg amt.
-<font color="FF0000">Methadone conversions* can only be approximate.
+Methadone conversions* can only be approximate.
 Current conversion 9:1. Other opioids are fairly standard conversions.
 Read out relative equivalents per day in the right cells</font>.
       </td>
@@ -335,7 +332,7 @@ Read out relative equivalents per day in the right cells</font>.
     <tr>
       <th nowrap="nowrap" class="tHeadW">Fentanyl TransD (mcg)</th>
       <td class="tBodyW"><input id="10" type="text" name="fentantran" value="0" size="5" onblur="MorphEquiv();"/></td>
-      <td colspan="2" rowspan="4">This tool should not be used to replace judgment from a licenced clinician.
+      <td colspan="2" rowspan="4"><font color="FF0000">This tool should not be used to replace judgment from a licenced clinician.</font>
       </td>
     </tr>
     <tr>
@@ -353,11 +350,11 @@ Read out relative equivalents per day in the right cells</font>.
     <tr>
       <th nowrap="nowrap" class="tHeadA">Methadone PO (mg)*</th>
       <td class="tBodyW"><input id="14" type="text" name="methadonpo" value="0" size="5" onblur="MorphEquiv();"/></td>
-			<th align="right" colspan="2"><center><i id="15" type="reset"><h3><b>Reset  </b></h3></i></center><!-- <input id="15" type="reset"/> --></th>
+			<th align="right" colspan="2"><center><i id="15" type="reset"><h3><b class="tmessage"><font color="FF0000">Reset</font></b></h3></i></center><!-- <input id="15" type="reset"/> --></th>
 			<!-- <td align="right"><button id="15" type="button" onclick="MorphEquiv()">Display Total</button></td> -->
     </tr>
 		<tr>
-			<td colspan="4">Click anywhere to update conversion.</td>
+			<td colspan="4"><font color="FF0000">Click anywhere to update conversion.</font></td>
 			<!-- <td align="center"><input type="reset"/></td>
 			<td><button id="15" type="button" onclick="MorphEquiv()">Display Total</button></td> -->
 		</tr>
